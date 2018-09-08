@@ -1,13 +1,17 @@
 #include <iostream>
 #include "AVLTree.h"
 
+std::string suffix(int i);
+
 int main(){
     auto *tree = new AVLTree;
     unsigned long long n, q1, q2;
     unsigned long long s;
     char op;
+    std::cout << "Enter the number of operations you want to perform: ";
     std::cin >> n;
-    for (int i = 0; i < n; ++i) {
+    for (int i = 1; i <= n; ++i) {
+        std::cout << i << suffix(i%100) << " operation: ";
         std::cin >> op;
         switch (op){
             case '?' :{
@@ -32,8 +36,23 @@ int main(){
                 s = tree->sum(q1, q2);
                 std::cout << s << "\n";
             }
-            default:break;
+
+            default:{
+                std::cout << "Invalid operation! \nPlease restart the program again." << std::endl;
+                return 1;
+            }
         }
     }
     delete tree;
+}
+
+std::string suffix(int i){
+    if(!(i == 11 || i == 12 || i == 13)){
+        switch (i%10){
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+        }
+    }
+    return "th";
 }
