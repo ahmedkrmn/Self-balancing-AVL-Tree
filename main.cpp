@@ -39,6 +39,7 @@ int main(){
 
             default:{
                 std::cout << "Invalid operation! \nPlease restart the program again." << std::endl;
+                delete tree;
                 return 1;
             }
         }
